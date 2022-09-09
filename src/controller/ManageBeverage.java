@@ -1,28 +1,51 @@
 package controller;
 
-import model.RestaurantBeverage;
 
-import java.util.HashMap;
-import java.util.Map;
+import model.entity.RestaurantBeverage;
+import storage.beverage.BeverageData;
+import storage.beverage.ReadAndWriteBeverage;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class ManageBeverage {
-    public static Map<String,Double> restaurantBeverage= new HashMap<>();
+    private static BeverageData beverageData= ReadAndWriteBeverage.getInstance();
+
+    public static List<RestaurantBeverage> beverageList;
 
     static {
-        restaurantBeverage.put("Wine", 100.0);
-        restaurantBeverage.put("Juice", 80.0);
-        restaurantBeverage.put("Cocktail", 40.0);
-        restaurantBeverage.put("Beer", 60.0);
-        restaurantBeverage.put("Tea", 50.0);
-    }
-    public void addNewBeverage(RestaurantBeverage beverage){
-        restaurantBeverage.put(beverage.getBeverageName(), beverage.getBeveragePrice());
-    }
-    public void editBeverage(String key, Double value){
-        restaurantBeverage.replace(key, value);
-    }
-    private void deleteBeverage(String key){
-        restaurantBeverage.remove(key);
+        beverageList= beverageData.readFile();
     }
 
+
+    public void displayBeverage(){
+        for (RestaurantBeverage list:beverageList
+             ) {
+            System.out.println(list.toString());
+        }
+    }
+    public  void addNewBeverage(RestaurantBeverage drink){
+        beverageList.add(drink);
+        beverageData.writeFile(beverageList);
+    }
+    public void editBeverageById( int pos, RestaurantBeverage drink){
+       for (int i=0; i< beverageList.size();i++){
+           if (pos==i){
+               beverageList.set(pos,drink);
+           }
+       }
+    }
+    public void deleteBeverageById(int index){
+        beverageList.remove(index);
+    }
+
+    public void searBeverageByName(String name){
+        for (int i = 0; i< beverageList.size();i++){
+            if (beverageList.get(i).getBeverageName().equalsIgnoreCase(name)){
+                System.out.println(beverageList.get(i).toString());
+            }
+        }
+    }
 }

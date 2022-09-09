@@ -1,9 +1,7 @@
 package storage.custome;
 
-import model.Customer;
+import model.entity.Customer;
 import storage.GenerateData;
-
-import java.util.List;
 
 public interface DataFile extends GenerateData<Customer> {
 //    List<Customer> readFile();

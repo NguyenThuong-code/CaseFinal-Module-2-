@@ -1,6 +1,6 @@
 package storage.custome;
 
-import model.Customer;
+import model.entity.Customer;
 
 import java.io.*;
 import java.util.ArrayList;

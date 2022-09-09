@@ -1,6 +1,8 @@
-package model;
+package model.entity;
 
-public class RestaurantFood {
+import java.io.Serializable;
+
+public class RestaurantFood implements Serializable {
     private String typeFood;
     private Double priceBuffet;
 
@@ -26,5 +28,13 @@ public class RestaurantFood {
 
     public void setPriceBuffet(Double priceBuffet) {
         this.priceBuffet = priceBuffet;
+    }
+
+    @Override
+    public String toString() {
+        return "RestaurantFood{" +
+                "typeFood='" + typeFood + '\'' +
+                ", priceBuffet=" + priceBuffet +
+                '}';
     }
 }

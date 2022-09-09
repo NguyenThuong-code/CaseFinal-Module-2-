@@ -1,27 +1,26 @@
-package model;
+package model.entity;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Optional;
 
-public  abstract  class Customer {
+public  abstract  class Customer implements Serializable {
     private String fullName;
     private String idTable;
     private int numberPerson;
-    private LocalDate dateService;
     private RestaurantFood restaurant;
-    private PaymentMethod payment;
     private RestaurantBeverage beverage;
     public Customer() {
     }
 
-    public Customer(String fullName, String idTable, int numberPerson, LocalDate dateService, RestaurantFood restaurant,RestaurantBeverage beverage, PaymentMethod payment) {
+    public Customer(String fullName, String idTable, int numberPerson, RestaurantFood restaurant,RestaurantBeverage beverage) {
         this.fullName = fullName;
         this.idTable = idTable;
         this.numberPerson = numberPerson;
-        this.dateService = dateService;
+
         this.restaurant = restaurant;
         this.beverage=beverage;
-        this.payment=payment;
+
     }
 
     public String getFullName() {
@@ -52,13 +51,6 @@ public  abstract  class Customer {
         this.numberPerson = numberPerson;
     }
 
-    public LocalDate getDateService() {
-        return dateService;
-    }
-
-    public void setDateService(LocalDate dateService) {
-        this.dateService = dateService;
-    }
 
     public RestaurantFood getRestaurant() {
         return restaurant;
@@ -76,15 +68,8 @@ public  abstract  class Customer {
         this.beverage = beverage;
     }
 
-    public PaymentMethod getPayment() {
-        return payment;
-    }
 
-    public void setPayment(PaymentMethod payment) {
-        this.payment = payment;
-    }
-    public abstract void CalculateBill();
-
+public abstract double calculatePrice();
 
 
     @Override
@@ -93,9 +78,7 @@ public  abstract  class Customer {
                 "fullName='" + fullName + '\'' +
                 ", idTable='" + idTable + '\'' +
                 ", numberPerson=" + numberPerson +
-                ", dateService=" + dateService +
-                ", restaurant=" + restaurant +
-                ", paymentMethod"+ payment
+                ", restaurant=" + restaurant
                ;
     }
 

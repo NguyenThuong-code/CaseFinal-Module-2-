@@ -1,6 +1,8 @@
-package model;
+package model.entity;
 
-public class RestaurantBeverage {
+import java.io.Serializable;
+
+public class RestaurantBeverage implements Serializable {
   private String beverageName;
   private Double beveragePrice;
 

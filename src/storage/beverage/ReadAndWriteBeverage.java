@@ -1,8 +1,6 @@
 package storage.beverage;
 
-import model.Customer;
-import model.RestaurantBeverage;
-import model.RestaurantFood;
+import model.entity.RestaurantBeverage;
 
 import java.io.*;
 import java.util.ArrayList;

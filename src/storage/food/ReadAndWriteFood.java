@@ -1,7 +1,7 @@
 package storage.food;
 
 
-import model.RestaurantFood;
+import model.entity.RestaurantFood;
 
 import java.io.*;
 import java.util.ArrayList;
