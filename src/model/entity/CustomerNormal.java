@@ -8,6 +8,13 @@ import java.time.LocalDate;
 public class CustomerNormal extends Customer implements IDiscountBill, Serializable {
  private Float vat;
 
+    public CustomerNormal() {
+    }
+
+    public CustomerNormal(Float vat) {
+        this.vat = vat;
+    }
+
     public CustomerNormal(String fullName, String idTable, int numberPerson, RestaurantFood restaurant, RestaurantBeverage beverage, Float vat) {
         super(fullName, idTable, numberPerson, restaurant, beverage);
         this.vat = vat;

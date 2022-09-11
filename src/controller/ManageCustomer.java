@@ -1,9 +1,11 @@
 package controller;
 
+import model.dao.IDiscountBill;
 import model.entity.*;
 import storage.custome.DataFile;
 import storage.custome.ReadAndWrite;
 
+import java.util.Collections;
 import java.util.List;
 
 public class ManageCustomer {
@@ -23,6 +25,7 @@ public class ManageCustomer {
             }
         }
     }
+
     public void displayCustomerVip() {
         for (Customer list2 :  customerList
         ) {
@@ -51,6 +54,7 @@ public class ManageCustomer {
             for (int i = 0; i < customerList.size(); i++) {
                 if (customerList.get(i).getIdTable().equals(idTable) && customerList.get(i) instanceof CustomerNormal) {
                     customerList.set(i, customer);
+                  //  readWriteFile.writeFile(customerList);
                 }
             }
         }
@@ -61,11 +65,33 @@ public class ManageCustomer {
             }
         }
     }
+
  public void searchCustomerByName(String name){
         for (int i = 0;i<customerList.size();i++){
             if (customerList.get(i).getFullName().equalsIgnoreCase(name)){
                 System.out.println(customerList.get(i).toString());
             }
         }
+    }
+ public void sortCustomerByName(){
+     Collections.sort(customerList, new ManageCustomerAlphabet());
+     for (Customer list:customerList
+          ) {
+
+             System.out.println(list.toString());
+     }
+ }
+
+ public double getRealMoney(String idTable){
+     double total =0;
+     for (int i=0; i<customerList.size();i++){
+         if(customerList.get(i) instanceof IDiscountBill){
+             IDiscountBill discountBill=(IDiscountBill) customerList.get(i);
+             if (customerList.get(i).getIdTable().equals(idTable)){
+                 total=discountBill.getRealMoney();
+             }
+         }
+     }
+     return total;
  }
 }

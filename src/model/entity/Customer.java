@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Optional;
 
-public  abstract  class Customer implements Serializable {
+public abstract class Customer implements Serializable {
     private String fullName;
     private String idTable;
     private int numberPerson;
@@ -81,7 +81,4 @@ public abstract double calculatePrice();
                 ", restaurant=" + restaurant
                ;
     }
-
-
-
 }

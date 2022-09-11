@@ -10,6 +10,9 @@ import java.io.Serializable;
 public class CustomerVip extends Customer implements IDiscountBill, Serializable {
     private Float amountDiscount;
 
+    public CustomerVip() {
+    }
+
     public CustomerVip(Float amountDiscount) {
         this.amountDiscount = amountDiscount;
     }
@@ -39,7 +42,7 @@ public class CustomerVip extends Customer implements IDiscountBill, Serializable
     public String toString() {
         return "CustomerVip{" +
                 super.toString()+
-                "idDiscount='" + amountDiscount + '\'' +
+                "numberDiscount='" + amountDiscount + '\'' +
                 '}';
     }
 

@@ -29,6 +29,7 @@ public class ManageFood {
         foodList.add(food);
         foodData.writeFile(foodList);
     }
+
     public void editFoodById(int index, RestaurantFood food){
         for (int i=0; i<foodList.size();i++){
             if(index== i){
@@ -36,6 +37,7 @@ public class ManageFood {
             }
         }
     }
+
     public void deleteFoodById(int index){
         foodList.remove(index);
     }
